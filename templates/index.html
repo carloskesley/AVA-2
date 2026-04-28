@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Minhas Tarefas</h2>
+    <a href="/nova" class="btn btn-success">+ Nova Tarefa</a>
+</div>
+
+<div class="card shadow">
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover m-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if tarefas %}
+                    {% for t in tarefas %}
+                        <tr>
+                            <td>{{ t.titulo }}</td>
+                            <td>
+                                {% if t.status == 'concluida' %}
+                                    <span class="badge bg-success">Concluída</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">Pendente</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if t.status == 'pendente' %}
+                                    <a href="/concluir/{{ t.id }}" class="btn btn-sm btn-outline-success">Concluir</a>
+                                {% endif %}
+                                <a href="/editar/{{ t.id }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <a href="/excluir/{{ t.id }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center py-3">Nenhuma tarefa encontrada.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

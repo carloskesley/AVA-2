@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4>Editar Tarefa</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/editar/{{ tarefa.id }}">
+                    <div class="mb-3">
+                        <label>Título *</label>
+                        <input type="text" name="titulo" class="form-control" value="{{ tarefa.titulo }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Descrição</label>
+                        <textarea name="descricao" class="form-control" rows="4">{{ tarefa.descricao }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label>Status</label>
+                        <select name="status" class="form-select">
+                            <option value="pendente" {% if tarefa.status == 'pendente' %}selected{% endif %}>Pendente</option>
+                            <option value="concluida" {% if tarefa.status == 'concluida' %}selected{% endif %}>Concluída</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Atualizar Tarefa</button>
+                    <a href="/" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
