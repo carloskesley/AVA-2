@@ -36,7 +36,6 @@ Abra o seu terminal e clone o projeto:
 git clone https://github.com/carloskesley/AVA-2
 cd AVA-2
 ```
-*(Lembre-se de substituir a URL acima pelo link real do seu repositório no GitHub)*
 
 ### 2. Instalar as dependências necessárias
 Certifique-se de ter o Python instalado. Instale as bibliotecas do FastAPI e Jinja2 executando:
